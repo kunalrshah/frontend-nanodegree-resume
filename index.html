@@ -17,6 +17,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 <head>
   <!-- This tells the browser how to read the document. -->
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" width="device-width, initial-scale=1">
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Jura&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
   <!-- Tells the browser what the title of this page should be. -->
   <title>Resume</title>
@@ -52,7 +57,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 </head>
 <body unresolved>
   <div id="main">
-    Hello world!   <!-- You'll be deleting this line in the course -->
+    <!-- You'll be deleting this Hello World line in the course -->
+
 
     <!--
     Everything from here to the <script> tag below is the skeleton of your
@@ -114,26 +120,34 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     */
 
 
+
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.display = 'none';
+      //document.getElementById('topContacts').style.display = 'none';
+      document.getElementById("topContacts").style.backgroundColor = "black";
     }
     if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
+      //document.getElementById('header').style.display = 'none';
+      document.getElementById("header").style.backgroundColor = "black";
     }
     if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
+      //document.getElementById('workExperience').style.display = 'none';
+      document.getElementById("workExperience").style.backgroundColor = "black";
     }
     if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
+      //document.getElementById('projects').style.display = 'none';
+      document.getElementById("projects").style.backgroundColor = "black";
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
+      //document.getElementById('education').style.display = 'none';
+      document.getElementById("education").style.backgroundColor = "black";
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('letsConnect').style.display = 'none';
+      //document.getElementById('letsConnect').style.display = 'none';
+      document.getElementById("letsConnect").style.backgroundColor = "black";
     }
     if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.display = 'none';
+      //document.getElementById('mapDiv').style.display = 'none';
+      document.getElementById("mapDiv").style.backgroundColor = "black";
     }
   </script>
 </body>
