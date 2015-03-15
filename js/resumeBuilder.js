@@ -16,7 +16,7 @@ var myBio = {
 	},
 	"role" : "Senior Solution Architect / Senior Technology Manager",	
 	"bioPicUrl" : "images/kunalrshah.jpg",
-	"skills" : ["application development", "business process management", "requirements management", "project management", "architecture delivery"],
+	"skills" : ["application development", "business process management", "project management", "architecture delivery"],
 	"welcomeMsg" : "Welcome To My Work Experience & Skills Summary"
 }
 
@@ -175,6 +175,26 @@ function initializeResume()
 	$("#header").prepend(formattedName);
 
 
+}
+
+
+function displayMyContactInfo() {
+
+	//var formattedContactInfo = HTMLcontactGeneric.replace("%data$%", )
+
+	var formattedMobileNum = HTMLmobile.replace("%data%", myBio.contactInfo.phoneNum);
+	var formattedEmail = HTMLemail.replace("%data%", myBio.contactInfo.emailId);
+	var formattedGitHub = HTMLgithub.replace("%data%", myBio.contactInfo.github);
+	var formattedTwitter = HTMLtwitter.replace("%data%", myBio.contactInfo.twitter);
+	var formattedLocation = HTMLlocation.replace("%data%", myBio.contactInfo.location);
+
+	$("#topContacts").append(formattedMobileNum + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
+
+	var formattedBioPic = HTMLbioPic.replace("%data%", myBio.bioPicUrl);
+	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", myBio.welcomeMsg);
+
+	$("#header").append(formattedBioPic + formattedWelcomeMsg);
+
     if (myBio.skills.length > 0)
     {
       $("#header").append(HTMLskillsStart);
@@ -187,8 +207,8 @@ function initializeResume()
         $("#skills").append(formattedSkill);
       }
     }
-}
 
+}
 
 function displayMyWorkHistory() {
 
@@ -225,6 +245,7 @@ function inName(fName, lName)
 
 
 initializeResume();
+displayMyContactInfo();
 displayMyWorkHistory();
 
 $(document).click(function(loc) {
