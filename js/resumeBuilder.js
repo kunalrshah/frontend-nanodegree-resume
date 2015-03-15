@@ -28,27 +28,27 @@ var myEducation = {
 			"name" : "New Jersey Institute of Technology",
 			"location" : "Newark, NJ, US",
 			"degree" : "MS",
-			"major" : ["Computer Science"],
-			"graduationYear" : 1993
+			"majors" : ["Computer Science"],
+			"dates" : "1993"
 		},
 		{
 			"name" : "Thadomal Shahani Engineering Collect, The university of Bombay",
 			"location" : "Mumbai, MH, India",
 			"degree" : "BE",
-			"major" : ["Computer Engineering"],
-			"graduationYear" : 1989
+			"majors" : ["Computer Engineering"],
+			"dates" : "1989"
 		}
 	],
 	"onlineCourses" : [
 		{
 			"name" : "Front-End Web Development Nanodegree",
 			"provider" : "Udacity",
-			"dates" : "01/2015-Present"
+			"dates" : "2015"
 		},
 		{
 			"name" : "Data Scientist Specialization",
 			"provider" : "Coursera",
-			"dates" : "01/2015-Present"
+			"dates" : "2015"
 		}
 	]
 }
@@ -212,7 +212,7 @@ function displayMyContactInfo() {
 
 function displayMyWorkHistory() {
 
-	console.log(myWorkHistory.myJobs.length);
+	//console.log(myWorkHistory.myJobs.length);
 
 	var job = {};
 
@@ -230,9 +230,28 @@ function displayMyWorkHistory() {
 	}	
 
 	myProjects.display();
+}
 
-	$("#mapDiv").append(googleMap);	
+function displayMyEducation() {
 
+	for (sch in myEducation.schools)
+	{
+		$("#education").append(HTMLschoolStart);
+		var formattedSchoolName = HTMLschoolName.replace("%data%", myEducation.schools[sch].name);
+		var formattedSchoolDeg = HTMLschoolDegree.replace("%data%", myEducation.schools[sch].degree);
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%", myEducation.schools[sch].dates);
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", myEducation.schools[sch].location);
+
+		$(".education-entry:last").append(formattedSchoolName + formattedSchoolDeg + formattedSchoolDates + formattedSchoolLocation);
+
+		for (mj in myEducation.schools[sch].majors) {
+			var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", myEducation.schools[sch].majors[mj]);
+			$(".education-entry:last").append(formattedSchoolMajor);			
+		}
+	}
+
+	$("#mapDiv").append(googleMap);
+	// $("#main").append(internationalizeButton);
 }
 
 function inName(fName, lName)
@@ -247,32 +266,15 @@ function inName(fName, lName)
 initializeResume();
 displayMyContactInfo();
 displayMyWorkHistory();
+displayMyEducation();
+
+
 
 $(document).click(function(loc) {
 	logClicks(loc.pageX, loc.pageY);
 });
 
-$("#main").append(internationalizeButton);
 
-// $("#main").append(myCurrentJob["myPosition"]);
-// $("#main").append(myEducation.mySchoolName);
-
-// console.log(myCurrentJob);
-
-// $("#myFName").append(myBio.name.fName);
-// $("#myMInit").append(myBio["name"]["mInit"]);
-// $("#myLName").append(myBio.name.lName);
-
-// var formattedEmployer = HTMLworkEmployer.replace("%data%", myCurrentJob.employer);
-// var	formattedWorkDates = HTMLworkDates.replace("%data%", myCurrentJob.workDates);
-// var formattedWorkTitle = HTMLworkTitle.replace("%data%", myCurrentJob["myPosition"]);
-
-// var formattedSchoolName = HTMLschoolName.replace("%data%", myEducation.mySchoolName);
-
-// console.log(formattedSchoolName);
-// console.log(formattedWorkTitle);
-// $("#workExperience").append(formattedWorkTitle);
-// $("#education").append(formattedSchoolName);
 
 
 
