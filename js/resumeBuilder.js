@@ -35,7 +35,7 @@ var myEducation = {
 			"name" : "Thadomal Shahani Engineering Collect, The university of Bombay",
 			"location" : "Mumbai, MH, India",
 			"degree" : "BE",
-			"majors" : ["Computer Engineering"],
+			"majors" : ["Computer Engineering", "English"],
 			"dates" : "1989"
 		}
 	],
@@ -43,11 +43,13 @@ var myEducation = {
 		{
 			"name" : "Front-End Web Development Nanodegree",
 			"provider" : "Udacity",
+			"courseUrl" : "https://www.udacity.com/course/nd001",
 			"dates" : "2015"
 		},
 		{
 			"name" : "Data Scientist Specialization",
 			"provider" : "Coursera",
+			"courseUrl" : "https://www.coursera.org/specialization/jhudatascience/1?utm_medium=listingPage",
 			"dates" : "2015"
 		}
 	]
@@ -248,6 +250,21 @@ function displayMyEducation() {
 			var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", myEducation.schools[sch].majors[mj]);
 			$(".education-entry:last").append(formattedSchoolMajor);			
 		}
+	}
+
+
+//	$("#online-courses").append(HTMLonlineClasses);
+
+	for (course in myEducation.onlineCourses) {
+
+		$("#online-courses").append(HTMLonlineCourseStart);		
+		var formattedCourseTitle = HTMLonlineTitle.replace("%data%", myEducation.onlineCourses[course].name);
+		var formattedCourseProvider = HTMLonlineSchool.replace("%data%", myEducation.onlineCourses[course].provider);
+		var formattedCourseDates = HTMLonlineDates.replace("%data%", myEducation.onlineCourses[course].dates);
+		var formattedCourseUrl = HTMLonlineURL.replace("%data%", myEducation.onlineCourses[course].courseUrl);
+
+		//$(".education-entry:last").append(formattedCourseTitle + formattedCourseProvider + formattedCourseDates + formattedCourseUrl);
+		$(".course-entry:last").append(formattedCourseTitle + formattedCourseProvider + formattedCourseDates + formattedCourseUrl);
 	}
 
 	$("#mapDiv").append(googleMap);
