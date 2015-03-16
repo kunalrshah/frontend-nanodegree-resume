@@ -32,6 +32,13 @@ var myEducation = {
 			"dates" : "1993"
 		},
 		{
+			"name" : "The University of Texas at Arlington",
+			"location" : "Arlington, TX, US",
+			"degree" : "MS",
+			"majors" : ["Computer Science"],
+			"dates" : "1991"
+		},
+		{
 			"name" : "Thadomal Shahani Engineering Collect, The university of Bombay",
 			"location" : "Mumbai, MH, India",
 			"degree" : "BE",
