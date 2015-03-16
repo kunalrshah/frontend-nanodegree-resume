@@ -17,7 +17,7 @@ var myBio = {
 	"role" : "Senior Solution Architect / Senior Technology Manager",	
 	"bioPicUrl" : "images/kunalrshah.jpg",
 	"skills" : ["application development", "business process management", "project management", "architecture delivery"],
-	"welcomeMsg" : "Welcome To My Work Experience & Skills Summary"
+	"welcomeMsg" : "Welcome To My Work History and Projects Summary"
 }
 
 
