@@ -1,6 +1,3 @@
-
-
-
 var myBio = {
 	"name" : {
 		"firstName" : "Kunal",
@@ -267,15 +264,6 @@ function initializeResume()
 } // header - initialize resume
 
 
-function displayMyContactInfo() {
-} // contact info
-
-function displayMyWorkHistory() {
-}
-
-function displayMyEducation() {
-}
-
 //
 // This function is meant to take the First Name and Last Name; and covert it to an internationalized form
 // e.g. "kUNal Shah" will be converted to  "Kunal SHAH"
@@ -288,13 +276,10 @@ function inName(fName, lName)
 	return (fN + " " + lN);
 }
 
-
+//
+// call specific functions so as to build the resume as specificed by the Project P2 requirements
+//
 initializeResume();
-
-// displayMyContactInfo();
-// displayMyWorkHistory();
-// displayMyEducation();
-
 myBio.displayHeaderContact("#topContacts");
 myBio.displayHeaderBio();
 myWorkHistory.display();
