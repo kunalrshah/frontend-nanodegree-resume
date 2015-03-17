@@ -137,15 +137,15 @@ var myWorkHistory = {
 			"isCurrentJob" : 1
 		},
 		{
-			"employer" : "GENPACT",
+			"employer" : "GENPACT - COGNOS",
 			"position" : "Senior Enterprise Integration Architect (Consulting)",
 			"dates" : "06/2005-01/2006",
-			"location" : "New York, NY, US",
+			"location" : "Ottawa, ON, CA",
 			"jobDescription" : "Consulting Integration Architect for a short-term (sdix months) engagement with COGNOS IT; guiding them in their efforts to rationalize their IT application portfolio and help them re-engineer their systems interactions to utilize a centralized Customer Data Hub and enfore Master Data Management standards.",
 			"isCurrentJob" : 0
 		},
 		{
-			"employer" : "KEANE",
+			"employer" : "KEANE - MORGAN STANLEY",
 			"position" : "Senior Principal Consultant",
 			"dates" : "08/1999-06/2005",
 			"location" : "Princeton Junction, NJ, US",
