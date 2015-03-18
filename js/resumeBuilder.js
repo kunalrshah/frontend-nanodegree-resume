@@ -30,11 +30,13 @@ var myBio = {
 	},
 	"displayHeaderBio" : function() {
 		var formattedBioPic = HTMLbioPic.replace("%data%", myBio.bioPicUrl);
+		$("#header").append(formattedBioPic);    
+	}, // display function
+	"displayWelcomeMsg" : function() {
 		var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", myBio.welcomeMsg);
+		$("#header").append(formattedWelcomeMsg);
 
-		$("#header").append(formattedBioPic + formattedWelcomeMsg);
-
-	    if (myBio.skills.length > 0)
+		if (myBio.skills.length > 0)
 	    {
 	      $("#header").append(HTMLskillsStart);
 
@@ -46,7 +48,7 @@ var myBio = {
 	        $("#skills").append(formattedSkill);
 	      } // Iterate through the skills array and format each skill using the helper js
 	    } // check skills array length
-	} // display function
+	} // displayWelcomeMsg()
 } // myBio object
 
 
@@ -102,9 +104,11 @@ var myEducation = {
 			$(".education-entry:last").append(formattedSchoolName + formattedSchoolDeg + formattedSchoolDates + formattedSchoolLocation);
 
 			var mj = {};
+
+			$(".education-entry:last").append(HTMLschoolMajorStart);
 			for (mj in myEducation.schools[sch].majors) {
 				var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", myEducation.schools[sch].majors[mj]);
-				$(".education-entry:last").append(formattedSchoolMajor);			
+				$(".edu-major-entry:last").append(formattedSchoolMajor);			
 			} // for loop for majors
 		} // for loop schools
 
@@ -161,8 +165,9 @@ var myWorkHistory = {
 			var formattedEmployer = HTMLworkEmployer.replace("%data%", myWorkHistory.myJobs[job].employer);
 			var formattedTitle = HTMLworkTitle.replace("%data%", myWorkHistory.myJobs[job].position);
 			var formattedWorkDates = HTMLworkDates.replace("%data%", myWorkHistory.myJobs[job].dates);
+			var formattedWorkLocation = HTMLworkLocation.replace("%data%", myWorkHistory.myJobs[job].location);
 			var formattedWorkDescr = HTMLworkDescription.replace("%data%", myWorkHistory.myJobs[job].jobDescription);
-			var formattedJobRec = formattedEmployer + formattedTitle + formattedWorkDates + formattedWorkDescr;
+			var formattedJobRec = formattedEmployer + formattedTitle + formattedWorkDates + formattedWorkLocation + formattedWorkDescr;
 
 			$(".work-entry:last").append(formattedJobRec);
 		} // for loop to iterate through the Work History, Jobs
@@ -250,13 +255,10 @@ function initializeResume()
 {
 	//var myName = myBio.name.firstName + " " + myBio.name.lastName;
 	var myName = inName(myBio.name.firstName.trim(), myBio.name.lastName.trim());
-
-	var myEmail = myBio.contactInfo.emailId;
 	var myRole = myBio.role;
 
 	var formattedName = HTMLheaderName.replace("%data%", myName);
 	var formatterRole = HTMLheaderRole.replace("%data%", myRole);
-	var formattedEmail = HTMLemail.replace("%data%", myEmail);
 
 
 	$("#header").prepend(formatterRole);
@@ -282,6 +284,7 @@ function inName(fName, lName)
 initializeResume();
 myBio.displayHeaderContact("#topContacts");
 myBio.displayHeaderBio();
+myBio.displayWelcomeMsg();
 myWorkHistory.display();
 myEducation.display();
 myBio.displayHeaderContact("#footerContacts");

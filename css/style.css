@@ -43,17 +43,18 @@ h4 {
 }
 
 h2, h3, h4, h5 {
-  padding:10px;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding:2px;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 
 .date-text {
   font-style: italic;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: bold;
   color: #999999;
-  line-height: 16px;
+  line-height: 14px;
   float: left;
 }
 
@@ -67,13 +68,20 @@ h2, h3, h4, h5 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 12px;
   color: #333333;
-  line-height: 21px;
+  line-height: 14px;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+.topic-title {
 }
 
 a {
   color: #1199C3;
+  font-size: 14px;
+  font-weight: bold;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -102,6 +110,7 @@ a {
 .white-text {
   font-weight: bold;
   color: #FFFFFF;
+  padding-left: 5px;
 }
 
 .gray {
@@ -111,7 +120,7 @@ a {
 }
 
 .dark-gray {
-  background-color: #4A4A4A;
+  background-color: #515151;
 }
 
 /* TODO: Replace with image later */
@@ -148,7 +157,7 @@ ul {
 }
 
 img {
-  padding: 10px;
+  padding: 2px;
 }
 
 /* Bar chart stuff */
@@ -164,7 +173,7 @@ img {
 }
 
 span {
-  padding: 5px;
+  padding: 1px;
 }
 
 #letsConnect {
