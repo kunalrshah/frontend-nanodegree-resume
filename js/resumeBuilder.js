@@ -133,12 +133,49 @@ var myEducation = {
 var myWorkHistory = {
 	"myJobs" : [
 		{
-			"employer" : "Citigroup, Inc",
+			"employer" : "Citigroup Inc.",
 			"position" : "Senior Solution Architect / Technology Manager",
 			"dates" : "02/2006-Present",
 			"location" : "Warren, NJ, US",
 			"jobDescription" : "Responsibilities include variety of roles ranging from Product Engineering, Solution Architecture, Management of Application Delivery, and Massively Parallel Processing for Analytical Models",
-			"isCurrentJob" : 1
+			"isCurrentJob" : 1,
+			"workProjects" : [
+				{
+					"name" : "Cross-Functional Architecture across Compliance, Finance and Risk Management technology divisions",
+					"designation" : "SVP / Senior Solution Architect - BigData Implementation for BI/Analytics",
+					"dates" : "2015",
+					"description" : "Cross-Functional Architecture across Compliance Tech, Finance Tech, Risk Management Tech and HR Tech. Some notable projects are with Data Innovation Office - on Data Governance Automation; Enterprise Analytics Platform, and Reusable Enterprise Assets Program",
+					"images" : ["images/XfuncArch.jpg", "images/enterprise-architecture.jpg"],
+				},
+				{
+					"name" : "HR Transformation / Global Manager Portal",
+					"dates" : "2013-2015",
+					"designation" : "SVP / Senior Technology Manager - Global HR Portal",
+					"description" : "Tier-0 Self Service Capability for Global Population of People Managers",
+					"images" : ["images/HRPortal.jpg", "images/png_workday.png"],
+				},
+				{
+					"name" : "Portfolio Architecture Services for Risk Management Technology across all banking businesses",
+					"dates" : "2010-2013",
+					"designation" : "SVP / Sr. Portfolio Architect",
+					"description" : "Provide end-to-end solution architecture services to $150MM portfolio of Risk Management Technology applications. Manage a small team of data architects, technical architects, as well as infrastructure architects",
+					"images" : ["images/riskmgmt.jpg", "images/timescape.jpg", "images/netezza_ampp.jpg"],
+				},
+				{
+					"name" : "eDelivery - Global Shared Utility (GSU) for Push eStatements",
+					"dates" : "2008-2010",
+					"designation" : "VP / Sr. Solutions Architect",
+					"description" : "For an enterprise-wide green initiative, implement a global utility service for various business units to delegate their Push eStatement capability tothe  eDelivery GSU",
+					"images" : ["images/estmt.jpg", "images/eDel_global_promise.jpg"],
+				},
+				{
+					"name" : "Shared Technology Services for Business Process Management Systems",
+					"dates" : "2006-2008",
+					"designation" : "VP / Global Engineering Lead - BPMS",
+					"description" : "Lead and managed a shared services organization / center of excellence for adoption & implementation of Business Process Management practices and technologies",
+					"images" : ["images/ste.jpg", "images/IaaS_PaaS_SaaS.jpg"],
+				}
+			]
 		},
 		{
 			"employer" : "GENPACT - COGNOS",
@@ -146,7 +183,16 @@ var myWorkHistory = {
 			"dates" : "06/2005-01/2006",
 			"location" : "Ottawa, ON, CA",
 			"jobDescription" : "Consulting Integration Architect for a short-term (sdix months) engagement with COGNOS IT; guiding them in their efforts to rationalize their IT application portfolio and help them re-engineer their systems interactions to utilize a centralized Customer Data Hub and enfore Master Data Management standards.",
-			"isCurrentJob" : 0
+			"isCurrentJob" : 0,
+			"workProjects" : [
+				{
+					"name" : "COGNOS IT Transformation Initiative",
+					"dates" : "2005",
+					"designation" : "Senior Enterprise Integration Architect",
+					"description" : "Formulated a long-term strategy to support rapid growth, improve data quality and consistency and ensure interoperability of Cognos IT systems.",
+					"images" : ["images/cognos.png"],
+				}
+			]
 		},
 		{
 			"employer" : "KEANE - MORGAN STANLEY",
@@ -154,7 +200,16 @@ var myWorkHistory = {
 			"dates" : "08/1999-06/2005",
 			"location" : "Princeton Junction, NJ, US",
 			"jobDescription" : "Manage, Lead and Develop the next generation solution for capturing real-time market data from various stock exchanges as well as reuters; and establish a publish/subscribe mechanism to distribute the same to downstream systems for their timely utilization.",
-			"isCurrentJob" : 0
+			"isCurrentJob" : 0,
+			"workProjects" : [
+				{
+					"name" : "Equities and Equity Derivatives Market Data Capture, Master Data Management, Near Real-Time Distribution",
+					"dates" : "1999-2005",
+					"designation" : "Senior Principal Consultant / Application Delivery Manager / Lead Developer",
+					"description" : "Re-Engineer an in-house built C++ system for  Acquisition and Distribution for Equity Derivatives Market Data - to a multi-tiered, message-oriented Pure Java solution",
+					"images" : ["images/mktdata.jpg"],
+				}
+			]
 		}
 	],
 	"display" : function() {
@@ -162,7 +217,8 @@ var myWorkHistory = {
 		for (job in myWorkHistory.myJobs)
 		{
 			$("#workExperience").append(HTMLworkStart);
-			var formattedEmployer = HTMLworkEmployer.replace("%data%", myWorkHistory.myJobs[job].employer);
+			var employerName = myWorkHistory.myJobs[job].employer;
+			var formattedEmployer = HTMLworkEmployer.replace("%data%", employerName);
 			var formattedTitle = HTMLworkTitle.replace("%data%", myWorkHistory.myJobs[job].position);
 			var formattedWorkDates = HTMLworkDates.replace("%data%", myWorkHistory.myJobs[job].dates);
 			var formattedWorkLocation = HTMLworkLocation.replace("%data%", myWorkHistory.myJobs[job].location);
@@ -170,83 +226,72 @@ var myWorkHistory = {
 			var formattedJobRec = formattedEmployer + formattedTitle + formattedWorkDates + formattedWorkLocation + formattedWorkDescr;
 
 			$(".work-entry:last").append(formattedJobRec);
+
+			var proj = {};
+			
+			var comma = ",";
+			var projectsDivIdPrefix = employerName.split(" ", 1);
+			var projectsDivId = projectsDivIdPrefix + "-projects";
+			var hashProjectsDivId = "#" + projectsDivId;
+
+			var formattedWorkProjectsStart = HTMLworkProjectsStart.replace(new RegExp("%data%", 'g'), projectsDivId, "/g");
+			console.log("HTMLworkProjectsStart: " + formattedWorkProjectsStart);
+
+			$(".work-entry:last").append(formattedWorkProjectsStart);
+
+			var workProjectEntryLast = "." + projectsDivId + "-entry:last";
+			console.log("workProjectEntryLAst: " + workProjectEntryLast);
+
+			//$(".work-entry-last").append(HTMLworkProjectsTitle);
+			$(workProjectEntryLast).append(HTMLworkProjectsTitle);
+
+			var idx = 0;
+			for (proj in myWorkHistory.myJobs[job].workProjects)
+			{
+				// // "#projects"
+				// $("#" + projectsDivIdPrefix).append(HTMLprojectStart);
+
+				var projectId = projectsDivIdPrefix + "-" + idx;
+				var clsName = projectId + "-" + "project-entry";
+				var dotClsNameLastEntry = "." + clsName + ":last";
+				// console.log("ProjectId: " + projectId + ", ClassName: " + clsName);
+
+				var formattedProjectStart = HTMLprojectStart.replace("%class-name%", clsName);
+
+				$(hashProjectsDivId).append(formattedProjectStart);
+
+				var formattedProjTitle = HTMLprojectTitle.replace("%data%", myWorkHistory.myJobs[job].workProjects[proj].name);
+				var formattedProjDates = HTMLprojectDates.replace("%data%", myWorkHistory.myJobs[job].workProjects[proj].dates);
+				var formattedProjDescr = HTMLprojectDescription.replace("%data%", myWorkHistory.myJobs[job].workProjects[proj].description);
+				var formattedProjRec = formattedProjTitle + formattedProjDates + formattedProjDescr;
+				console.log(formattedProjRec);
+
+				// $(workProjectEntryLast).append(formattedProjRec);
+				$(dotClsNameLastEntry).append(formattedProjRec);
+
+
+				for (img in myWorkHistory.myJobs[job].workProjects[proj].images) {
+					var formattedProjImage = HTMLprojectImage.replace("%data%", myWorkHistory.myJobs[job].workProjects[proj].images[img]);
+					// $(".project-entry:last").append(formattedProjImage);
+					$(dotClsNameLastEntry).append(formattedProjImage);
+				} // iterate thru' project images
+				idx = idx + 1;
+			} // iterate thru' all the projects to be included on the resume			
+
 		} // for loop to iterate through the Work History, Jobs
-		myProjects.display();
+
+		/*myProjects.display();*/
+
 	} // display function
 } // myWorkHistory
 
 var myProjects = {
 	"projects" : [
-		{
-			"name" : "Cross-Functional Architecture across Compliance, Finance and Risk Management technology divisions",
-			"designation" : "SVP / Senior Solution Architect - BigData Implementation for BI/Analytics",
-			"dates" : "2015",
-			"description" : "Cross-Functional Architecture across Compliance Tech, Finance Tech, Risk Management Tech and HR Tech. Some notable projects are with Data Innovation Office - on Data Governance Automation; Enterprise Analytics Platform, and Reusable Enterprise Assets Program",
-			"images" : ["images/XfuncArch.jpg", "images/enterprise-architecture.jpg"],
-		},
-		{
-			"name" : "HR Transformation / Global Manager Portal",
-			"dates" : "2013-2015",
-			"designation" : "SVP / Senior Technology Manager - Global HR Portal",
-			"description" : "Tier-0 Self Service Capability for Global Population of People Managers",
-			"images" : ["images/HRPortal.jpg", "images/png_workday.png"],
-		},
-		{
-			"name" : "Portfolio Architecture Services for Risk Management Technology across all banking businesses",
-			"dates" : "2010-2013",
-			"designation" : "SVP / Sr. Portfolio Architect",
-			"description" : "Provide end-to-end solution architecture services to $150MM portfolio of Risk Management Technology applications. Manage a small team of data architects, technical architects, as well as infrastructure architects",
-			"images" : ["images/riskmgmt.jpg", "images/timescape.jpg", "images/netezza_ampp.jpg"],
-		},
-		{
-			"name" : "eDelivery - Global Shared Utility (GSU) for Push eStatements",
-			"dates" : "2008-2010",
-			"designation" : "VP / Sr. Solutions Architect",
-			"description" : "For an enterprise-wide green initiative, implement a global utility service for various business units to delegate their Push eStatement capability tothe  eDelivery GSU",
-			"images" : ["images/estmt.jpg", "images/eDel_global_promise.jpg"],
-		},
-		{
-			"name" : "Shared Technology Services for Business Process Management Systems",
-			"dates" : "2006-2008",
-			"designation" : "VP / Global Engineering Lead - BPMS",
-			"description" : "Lead and managed a shared services organization / center of excellence for adoption & implementation of Business Process Management practices and technologies",
-			"images" : ["images/ste.jpg", "images/IaaS_PaaS_SaaS.jpg"],
-		}, 
-		{
-			"name" : "IT Consulting Engagement with COGNOS IT",
-			"dates" : "2005",
-			"designation" : "Senior Enterprise Integration Architect",
-			"description" : "Formulated a long-term strategy to support rapid growth, improve data quality and consistency and ensure interoperability of Cognos IT systems.",
-			"images" : ["images/cognos.png"],
-		},			
-		{
-			"name" : "IT Consulting / Staff Augmentation Engagement with Morgan Stanley",
-			"dates" : "1999-2005",
-			"designation" : "Senior Principal Consultant / Application Delivery Manager / Lead Developer",
-			"description" : "Re-Engineer an in-house built C++ system for  Acquisition and Distribution for Equity Derivatives Market Data - to a multi-tiered, message-oriented Pure Java solution",
-			"images" : ["images/mktdata.jpg"],
-		}
+
 	],
 	"display" : function() {
 
-		var proj = {};
 
-		for (proj in myProjects.projects)
-		{
-			$("#projects").append(HTMLprojectStart);
-
-			var formattedProjTitle = HTMLprojectTitle.replace("%data%", myProjects.projects[proj].name);
-			var formattedProjDates = HTMLprojectDates.replace("%data%", myProjects.projects[proj].dates);
-			var formattedProjDescr = HTMLprojectDescription.replace("%data%", myProjects.projects[proj].description);
-			var formattedProjRec = formattedProjTitle + formattedProjDates + formattedProjDescr;
-			$(".project-entry:last").append(formattedProjRec);
-
-
-			for (img in myProjects.projects[proj].images) {
-				var formattedProjImage = HTMLprojectImage.replace("%data%", myProjects.projects[proj].images[img]);
-				$(".project-entry:last").append(formattedProjImage);
-			} // iterate thru' project images
-		} // iterate thru' all the projects to be included on the resume
 	} //display function
 } // myProjects
 

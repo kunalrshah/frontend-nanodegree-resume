@@ -81,9 +81,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         <div id="workExperience" class='gray'>
           <h2>Work Experience</h2>
         </div>
-        <div id="projects" class="gray">
-          <h2>Projects</h2>
-        </div>
+        <!--
+          <div id="projects" class="gray">
+            <h2>Projects</h2>
+          </div>
+        -->
         <div id="education" class='gray'>
           <h2>Education</h2>
         </div>
@@ -146,10 +148,14 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       //document.getElementById('workExperience').style.display = 'none';
       document.getElementById("workExperience").style.backgroundColor = "black";
     }
+    
+    /*
     if(document.getElementsByClassName('project-entry').length === 0) {
       //document.getElementById('projects').style.display = 'none';
       document.getElementById("projects").style.backgroundColor = "black";
     }
+    */
+
     if(document.getElementsByClassName('education-entry').length === 0) {
       //document.getElementById('education').style.display = 'none';
       document.getElementById("education").style.backgroundColor = "black";

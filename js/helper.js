@@ -35,8 +35,10 @@ var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
+var HTMLworkProjectsStart = '<div id="%data%" class="%data%-entry"></div>';
+var HTMLworkProjectsTitle = '<h4>Work Projects</h4>';
 
-var HTMLprojectStart = '<div class="project-entry"></div>';
+var HTMLprojectStart = '<div class="%class-name%"></div>'; <!-- className = <projectName>-<project-entry> -->
 var HTMLprojectTitle = '<a class="topic-title" href="#">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p><br>';
