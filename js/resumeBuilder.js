@@ -240,7 +240,7 @@ var myWorkHistory = {
 			$(".work-entry:last").append(formattedWorkProjectsStart);
 
 			var workProjectEntryLast = "." + projectsDivId + "-entry:last";
-			console.log("workProjectEntryLAst: " + workProjectEntryLast);
+			// console.log("workProjectEntryLAst: " + workProjectEntryLast);
 
 			//$(".work-entry-last").append(HTMLworkProjectsTitle);
 			$(workProjectEntryLast).append(HTMLworkProjectsTitle);
@@ -264,7 +264,7 @@ var myWorkHistory = {
 				var formattedProjDates = HTMLprojectDates.replace("%data%", myWorkHistory.myJobs[job].workProjects[proj].dates);
 				var formattedProjDescr = HTMLprojectDescription.replace("%data%", myWorkHistory.myJobs[job].workProjects[proj].description);
 				var formattedProjRec = formattedProjTitle + formattedProjDates + formattedProjDescr;
-				console.log(formattedProjRec);
+				// console.log(formattedProjRec);
 
 				// $(workProjectEntryLast).append(formattedProjRec);
 				$(dotClsNameLastEntry).append(formattedProjRec);
@@ -280,20 +280,20 @@ var myWorkHistory = {
 
 		} // for loop to iterate through the Work History, Jobs
 
-		/*myProjects.display();*/
+/*		myProjects.display();*/
 
 	} // display function
 } // myWorkHistory
 
-var myProjects = {
-	"projects" : [
+// var myProjects = {
+// 	"projects" : [
 
-	],
-	"display" : function() {
+// 	],
+// 	"display" : function() {
 
 
-	} //display function
-} // myProjects
+// 	} //display function
+// } // myProjects
 
 
 function initializeResume()
