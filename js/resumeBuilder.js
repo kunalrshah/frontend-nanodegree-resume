@@ -243,7 +243,9 @@ var myWorkHistory = {
 			// console.log("workProjectEntryLAst: " + workProjectEntryLast);
 
 			//$(".work-entry-last").append(HTMLworkProjectsTitle);
-			$(workProjectEntryLast).append(HTMLworkProjectsTitle);
+
+			var formattedWorkProjectsTitle = HTMLworkProjectsTitle.replace("%data%", projectsDivIdPrefix);
+			$(workProjectEntryLast).append(formattedWorkProjectsTitle);
 
 			var idx = 0;
 			for (proj in myWorkHistory.myJobs[job].workProjects)
